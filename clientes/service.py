@@ -42,3 +42,16 @@ class ClientService:
                 f'[ERROR][VALIDATE NUMBER] Invalid phone: {phone}'
             )
 
+    def update_phone(self, phone):
+        if self.client.phone == phone:
+            raise Exception(
+                f'[ERROR][UPDATE PHONE] The new phone must be different from the current phone ({self.client.phone}).'
+            )
+        try:
+            self._validate_phone(phone)
+        except Exception as e:
+            print(e)
+            return
+        self.client.phone = phone
+        self.client.save()
+
