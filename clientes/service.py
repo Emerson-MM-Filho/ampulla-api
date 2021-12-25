@@ -13,3 +13,14 @@ class ClientService:
                     f'[ERROR][CLIENT SERVICE] Client does not exists. ({client_id=})'
                 )
 
+    def _validate_name(self, name):
+        if len(name) < 2:
+            raise Exception(
+                f'[ERROR][VALIDATE NAME] Invalid name: {name}'
+            )
+        for letter in name:
+            if letter.isdigit():
+                raise Exception(
+                    f'[ERROR][VALIDATE NAME] Invalid name: {name}'
+                )
+
