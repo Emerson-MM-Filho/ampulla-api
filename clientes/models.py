@@ -71,3 +71,6 @@ class Cliente(models.Model):
     complement = models.CharField(
         max_length=75, null=True, blank=True, verbose_name='complemento'
     )
+    
+    def __str__(self):
+        return name
