@@ -55,3 +55,15 @@ class ClientService:
         self.client.phone = phone
         self.client.save()
 
+    def update_name(self, name):
+        if self.client.name == name:
+            raise Exception(
+                f'[ERROR][UPDATE NAME] The new name must be different from the current name ({self.client.name}).'
+            )
+        try:
+            self._validate_name(name)
+        except Exception as e:
+            print(e)
+            return
+        self.client.name = name
+        self.client.save()
