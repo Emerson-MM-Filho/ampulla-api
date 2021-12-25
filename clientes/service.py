@@ -24,3 +24,9 @@ class ClientService:
                     f'[ERROR][VALIDATE NAME] Invalid name: {name}'
                 )
 
+    def _validate_phone(self, phone):
+        if len(phone) != 11 or phone[2] != '9':
+            raise Exception(
+                f'[ERROR][VALIDATE NUMBER] Invalid phone: {phone}'
+            )
+
