@@ -13,6 +13,18 @@ class ClientService:
                     f'[ERROR][CLIENT SERVICE] Client does not exists. ({client_id=})'
                 )
 
+    def create_client(self, name, phone):
+        try:
+            self._validate_name(name)
+            self._validate_phone(phone)
+        except Exception as e:
+            print(e)
+            return
+        client = Cliente.objects.create(name=name, phone=phone)
+        client.save()
+        self.client = client
+        return client
+
     def _validate_name(self, name):
         if len(name) < 2:
             raise Exception(
